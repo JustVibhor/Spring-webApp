@@ -1,7 +1,6 @@
 package com.vibhor.learnspringframework.game;
 
 public class MarioGame {
-	MarioGame game;
 	
 	public void up() {
 		System.out.println("Jump");
