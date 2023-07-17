@@ -1,11 +1,11 @@
 package com.vibhor.learnspringframework;
 
 import com.vibhor.learnspringframework.game.GameRunner;
-import com.vibhor.learnspringframework.game.MarioGame;
+//import com.vibhor.learnspringframework.game.MarioGame;
 import com.vibhor.learnspringframework.game.PacMan;
-import com.vibhor.learnspringframework.game.SuperContraGame;
+//import com.vibhor.learnspringframework.game.SuperContraGame;
 
-public class AppGamingBasicJava {
+public class App01GamingBasicJava {
 
 	public static void main(String[] args) {
 		
