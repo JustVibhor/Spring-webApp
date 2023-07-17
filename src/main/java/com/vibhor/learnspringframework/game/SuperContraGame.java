@@ -1,13 +1,13 @@
 package com.vibhor.learnspringframework.game;
 
-public class MarioGame implements GamingConsole{
-	
+public class SuperContraGame implements GamingConsole{
+
 	public void up() {
 		System.out.println("Jump");
 	}
 	
 	public void down() {
-		System.out.println("Go inside the hole");
+		System.out.println("Crouch");
 	}
 	
 	public void left() {
@@ -15,6 +15,6 @@ public class MarioGame implements GamingConsole{
 	}
 	
 	public void right() {
-		System.out.println("Move forward");
+		System.out.println("Shoot!!!");
 	}
 }
