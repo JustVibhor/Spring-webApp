@@ -2,52 +2,53 @@ package com.vibhor.learnspringframework.examples.a1;
 
 import java.util.Arrays;
 
+import javax.xml.crypto.Data;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+interface DataService {
+	int[] retrieveData();
+}
+
 @Component
-class YourBusinessClass {
+class MongoDbDataService implements DataService {
 
-	Dependency1 dependency1;
+	@Bean
+	public int[] retrieveData() {
+		return new int[] { 11, 22, 33, 44, 55 };
+	}
+}
 
-	Dependency2 dependency2;
+@Component
+@Primary
+class MySQLDataService implements DataService {
 
-//	@Autowired
-//	public void setDependency1(Dependency1 dependency1) {
-//		System.out.println("Setter injection - setDependency1");
-//		this.dependency1 = dependency1;
-//	}
-//
-//	@Autowired
-//	public void setDependency2(Dependency2 dependency2) {
-//		System.out.println("Setter injection - setDependency2");
-//		this.dependency2 = dependency2;
-//	}
+	@Bean
+	public int[] retrieveData() {
+		return new int[] { 1, 2, 3, 4, 5 };
+	}
+}
 
-//	Autowired not necessary for constructor injection recommended by Spring
-	public YourBusinessClass(Dependency1 dependency1, Dependency2 dependency2) {
+@Component
+class BusinessCalculationService {
+
+	private DataService dataService;
+
+	public BusinessCalculationService(DataService dataService) {
 		super();
-		System.out.println("Constructor injection - setDependency1 & setDependency2");
-		this.dependency1 = dependency1;
-		this.dependency2 = dependency2;
+		this.dataService = dataService;
 	}
 
-	public String toString() {
-		return "using " + dependency1 + " and " + dependency2;
+	@Bean
+	public int findMax() {
+		return Arrays.stream(dataService.retrieveData()).max().orElse(0);
 	}
-}
-
-@Component
-class Dependency1 {
-
-}
-
-@Component
-class Dependency2 {
-
 }
 
 @Configuration
@@ -57,8 +58,8 @@ public class DependencyInjectionLauncherApplication {
 	public static void main(String[] args) {
 
 		try (var context = new AnnotationConfigApplicationContext(DependencyInjectionLauncherApplication.class)) {
-//			Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
-			System.out.println(context.getBean(YourBusinessClass.class));
+
+			System.out.println(context.getBean(BusinessCalculationService.class).findMax());
 		}
 
 	}
