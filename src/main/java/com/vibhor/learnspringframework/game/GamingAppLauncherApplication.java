@@ -1,19 +1,16 @@
-package com.vibhor.learnspringframework;
+package com.vibhor.learnspringframework.game;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import com.vibhor.learnspringframework.game.GameRunner;
-
 @Configuration
 @ComponentScan("com.vibhor.learnspringframework.game")
-public class App03GamingSpringBeans {
-
+public class GamingAppLauncherApplication {
 
 	public static void main(String[] args) {
 
-		try (var context = new AnnotationConfigApplicationContext(App03GamingSpringBeans.class)) {
+		try (var context = new AnnotationConfigApplicationContext(GamingAppLauncherApplication.class)) {
 
 			context.getBean(GameRunner.class).run();
 		}

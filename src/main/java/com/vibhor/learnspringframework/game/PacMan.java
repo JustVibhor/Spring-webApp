@@ -1,8 +1,10 @@
 package com.vibhor.learnspringframework.game;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
+@Qualifier("pacMan")
 public class PacMan implements GamingConsole{
 	public void up() {
 		System.out.println("UP");

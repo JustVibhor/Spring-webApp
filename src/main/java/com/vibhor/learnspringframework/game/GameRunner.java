@@ -1,5 +1,6 @@
 package com.vibhor.learnspringframework.game;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ public class GameRunner {
 	
 	GamingConsole game;
 	
-	public GameRunner(GamingConsole game) {
+	public GameRunner(@Qualifier("pacMan") GamingConsole game) {
 		this.game = game;
 	}
 
