@@ -38,6 +38,7 @@ class SomeDependecy {
 	public void getRead() {
 		// TODO Auto-generated method stub
 		System.out.println("Do some task");
+		
 	}
 
 }
