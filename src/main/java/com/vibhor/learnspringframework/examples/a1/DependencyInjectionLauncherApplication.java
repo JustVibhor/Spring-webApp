@@ -2,19 +2,23 @@ package com.vibhor.learnspringframework.examples.a1;
 
 import java.util.Arrays;
 
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 interface DataService {
 	int[] retrieveData();
 }
 
-@Component
+//@Component
+//specialized component annotation which is used to manipulate data in database
+@Repository
+@Primary
 class MongoDbDataService implements DataService {
 
 	@Bean
@@ -23,8 +27,9 @@ class MongoDbDataService implements DataService {
 	}
 }
 
-@Component
-@Primary
+//@Component
+//specialized component annotation which is used to manipulate data in database
+@Repository
 class MySQLDataService implements DataService {
 
 	@Bean
@@ -33,7 +38,9 @@ class MySQLDataService implements DataService {
 	}
 }
 
-@Component
+//@Component
+// specialized component annotation which contains business logic
+@Service
 class BusinessCalculationService {
 
 	private DataService dataService;
