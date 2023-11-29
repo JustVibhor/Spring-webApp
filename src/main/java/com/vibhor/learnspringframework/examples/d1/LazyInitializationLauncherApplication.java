@@ -13,30 +13,43 @@ class ClassA {
 
 }
 
+// without using lazy the component will be initialized eager
+// which is preferred in most of the cases
+// but for some special cases where u need to save the memory
+// at startup u can use @Lazy on component or bean
+// using lazy with component or bean will be initialized when the particular
+// class is called, watch when we use @Lazy
+
 @Component
-// to delay initialization of a bean till when its called
 @Lazy
 class ClassB {
-	private ClassA classA;
+    private ClassA classA;
 
-	public ClassB(ClassA classA) {
-		System.out.println("Some initialization logic");
-		this.classA = classA;
-	}
+    public ClassB(ClassA classA) {
+        System.out.println("Some initialization logic");
+        this.classA = classA;
+    }
+
+    public void hadToMakeAMethod() {
+        System.out.println("Do Something");
+    }
 }
 
 @Configuration
 @ComponentScan()
 public class LazyInitializationLauncherApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		try (var context = new AnnotationConfigApplicationContext(LazyInitializationLauncherApplication.class)) {
-//			Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
-			System.out.println("Initialization of context is completed");
-			context.getBean(ClassB.class); 
-		}
+        try (var context =
+                     new AnnotationConfigApplicationContext
+                             (LazyInitializationLauncherApplication.class)) {
 
-	}
+            System.out.println("Initialization context is finished");
+
+            context.getBean(ClassB.class).hadToMakeAMethod();
+        }
+
+    }
 
 }
