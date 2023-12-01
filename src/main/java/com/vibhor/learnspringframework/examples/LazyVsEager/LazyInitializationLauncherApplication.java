@@ -1,6 +1,4 @@
-package com.vibhor.learnspringframework.examples.d1;
-
-import java.util.Arrays;
+package com.vibhor.learnspringframework.examples.LazyVsEager;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;

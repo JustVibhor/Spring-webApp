@@ -1,7 +1,5 @@
 package com.vibhor.learnspringframework.examples.f1;
 
-import java.util.Arrays;
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -53,7 +51,7 @@ public class PrePostAnnotationsContextLauncher {
 //			Arrays.stream(context.getBeanDefinitionNames())
 //			.forEach(System.out::println);
 
-			System.out.println(context.getBean(SomeClass.class));
+			System.out.println(context.getBean(com.vibhor.learnspringframework.examples.PreVsPost.SomeClass.class));
 		}
 
 	}

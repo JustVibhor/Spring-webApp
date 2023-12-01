@@ -1,6 +1,4 @@
-package com.vibhor.learnspringframework.examples.e1;
-
-import java.util.Arrays;
+package com.vibhor.learnspringframework.examples.beanScope;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
